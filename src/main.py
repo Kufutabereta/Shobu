@@ -1,35 +1,27 @@
+# Library imports
 import pygame
 from pygame.locals import *
 
-BLACK = (0, 0, 0)
-GRAY = (127, 127, 127)
-WHITE = (255, 255, 255)
+# User-library imports
+import color
 
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+clock = pygame.time.Clock()
 
-YELLOW = (255, 255, 0)
-CYAN = (0, 255, 255)
-MAGENTA = (255, 0, 255)
+key_dict = {K_k:color.BLACK, K_r:color.RED, K_g:color.GREEN, K_b:color.BLUE,
+    K_y:color.YELLOW, K_c:color.CYAN, K_m:color.MAGENTA, K_w:color.WHITE}
 
-background = GRAY
-
-key_dict = {K_k:BLACK, K_r:RED, K_g:GREEN, K_b:BLUE,
-    K_y:YELLOW, K_c:CYAN, K_m:MAGENTA, K_w:WHITE}
-
+background = color.GRAY
 
 pygame.init()
-
-print(key_dict)
-
 screen = pygame.display.set_mode((640, 240))
 
 running = True
+
 while running:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == QUIT:
             running = False
+
         if event.type == KEYDOWN:
             if event.key in key_dict:
                 background = key_dict[event.key]
@@ -39,23 +31,7 @@ while running:
 
     screen.fill(background)
     pygame.display.update()
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # Limit frames per second to limit CPU usage
+    clock.tick(60)
 
 pygame.quit()
