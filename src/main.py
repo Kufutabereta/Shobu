@@ -34,4 +34,10 @@ while running:
     # Limit frames per second to limit CPU usage
     clock.tick(60)
 
+
+#Input handling: movement , attacking
+#Sprite: pictures, images, font
+#Run game sequence
+
+
 pygame.quit()
